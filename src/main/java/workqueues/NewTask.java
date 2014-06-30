@@ -18,7 +18,7 @@ public class NewTask {
 		Channel channel = connection.createChannel();
 		
 		
-		channel.exchangeDeclare(EXCHANGE_NAME, "direct",true);
+		channel.exchangeDeclare(EXCHANGE_NAME, "direct", true);
 
 		channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
 		channel.queueBind(TASK_QUEUE_NAME, EXCHANGE_NAME, "");

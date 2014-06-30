@@ -1,8 +1,7 @@
 /.classpath
-
 /.project
-
+/.idea
 /bin/
-
 /target/
 /.settings/*
+rabbitmq.iml

@@ -1,5 +1,6 @@
 package helloworld;
 
+import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
@@ -14,9 +15,11 @@ public class Send {
 	    Connection connection = factory.newConnection();
 	    Channel channel = connection.createChannel();
 	    
-	    channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+	    channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 	    String message = "Hello World!";
-	    channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
+        AMQP.BasicProperties messageProperties = new AMQP.BasicProperties().builder().deliveryMode(2).build();
+
+        channel.basicPublish("", QUEUE_NAME, messageProperties, message.getBytes());
 	    System.out.println(" [x] Sent '" + message + "'");
 	    
 	    channel.close();
