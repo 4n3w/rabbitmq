@@ -29,14 +29,6 @@ public class OfferTest {
     }
 
     @Test
-    public void testA() {
-    }
-
-    @Test
-    public void testB() {
-    }
-
-    @Test
     public void marshalValidOfferToJSON() throws IOException {
         Offer offer = new Offer();
         offer.setCard_type_id("123");

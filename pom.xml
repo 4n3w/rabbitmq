@@ -92,6 +92,11 @@
             <artifactId>camel-spring</artifactId>
             <version>${apache.camel.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test</artifactId>
+            <version>${apache.camel.version}</version>
+        </dependency>
         <!--<dependency>-->
         <!--<groupId>javax.validation</groupId>-->
         <!--<artifactId>validation-api</artifactId>-->
