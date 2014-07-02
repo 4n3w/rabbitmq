@@ -8,6 +8,7 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.apache.camel.model.dataformat.JsonLibrary;
 
 public class FromJettyToRabbitmq {
     public static void main(String args[]) throws Exception {
@@ -28,6 +29,7 @@ public class FromJettyToRabbitmq {
         context.addRoutes(new RouteBuilder() {
             public void configure() {
                 from("jetty:http://localhost:9898")
+                        .marshal().json(JsonLibrary.Jackson)
                         // setting the DELIVERY_MODE to 2 means that the amqp messages will survive a broker restart/crash
                         .setHeader("rabbitmq.DELIVERY_MODE").constant(2)
                         .removeHeaders("CamelHttp*")
