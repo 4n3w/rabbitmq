@@ -1,10 +1,10 @@
 package model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
+@JsonRootName(value = "offer")
 public class Offer {
 
     @NotNull private String offer_id;
@@ -42,6 +42,16 @@ public class Offer {
 
     public void setRedeem_date(String redeem_date) {
         this.redeem_date = redeem_date;
+    }
+
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "offer_id='" + offer_id + '\'' +
+                ", card_type_id='" + card_type_id + '\'' +
+                ", member_id='" + member_id + '\'' +
+                ", redeem_date='" + redeem_date + '\'' +
+                '}';
     }
 }
 
